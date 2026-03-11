@@ -53,7 +53,7 @@ pipeline {
                     kind get clusters
                     echo ""
                     echo "--- kubectl ---"
-                    kubectl version --client --short
+                    kubectl version --client
                     echo ""
                     echo "--- Helm ---"
                     helm version --short
