@@ -31,8 +31,8 @@ pipeline {
         K8S_NAMESPACE      = 'react-app'
 
         // ── kind kubeconfig on the remote machine (192.168.1.44) ────────────
-        //    kind writes its config here by default; override if different
-        KUBECONFIG         = "${HOME}/.kube/config"
+        //    Absolute path — avoids $HOME being resolved on Jenkins master
+        KUBECONFIG         = '/home/jenkins/.kube/config'
     }
 
     stages {
