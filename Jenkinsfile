@@ -95,11 +95,12 @@ pipeline {
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    sh """
-                        echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
-                        docker push ${FULL_IMAGE}
+                    // Single quotes: shell expands $DOCKER_PASS — no Groovy interpolation warning
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker push ''' + FULL_IMAGE + '''
                         docker logout
-                    """
+                    '''
                 }
             }
         }
