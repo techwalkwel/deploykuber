@@ -1,0 +1,12 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+name: kind
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30080   # NodePort in the cluster
+        hostPort: 30080        # Port on 192.168.1.44
+        protocol: TCP
+      - containerPort: 30443   # Optional: for HTTPS
+        hostPort: 30443
+        protocol: TCP
