@@ -157,7 +157,7 @@ pipeline {
             steps {
                 echo '✅ Verifying deployment...'
                 sh """
-                    kubectl rollout status deployment/${HELM_RELEASE_NAME}-react-app \
+                    kubectl rollout status deployment/${HELM_RELEASE_NAME} \
                         -n ${K8S_NAMESPACE} --timeout=3m
                     echo ""
                     echo "--- Pods ---"
